@@ -7,6 +7,9 @@ import { CalendarDay } from '../../../core/models/models';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './month-view.component.html',
+  host: {
+    class: 'flex flex-col flex-1 h-full',
+  },
 })
 export class MonthViewComponent {
   @Input() month: CalendarDay[][] = [];
