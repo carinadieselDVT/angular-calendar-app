@@ -6,5 +6,6 @@ export const routes: Routes = [
   { path: 'month-view', component: MonthPageComponent },
   { path: 'year-view', component: YearPageComponent },
   { path: '', redirectTo: '/month-view', pathMatch: 'full' },
+  // TODO: Add wildcard component and maybe a home page
   //   { path: '**', component: PageNotFoundComponent },
 ];
