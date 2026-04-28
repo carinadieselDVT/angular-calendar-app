@@ -5,7 +5,7 @@ import { startOfMonth, startOfWeek, addDays, isSameMonth } from 'date-fns';
 @Injectable({
   providedIn: 'root',
 })
-export class Calendar {
+export class CalendarService {
   generateMonth(year: number, month: number): CalendarDay[][] {
     const weeks: CalendarDay[][] = [];
 
@@ -21,7 +21,6 @@ export class Calendar {
           date: new Date(dateIterator),
           inCurrentMonth: isSameMonth(dateIterator, firstDayOfMonth), // NB USE FOR STYLING !!!
         });
-        // basically day++
         dateIterator = addDays(dateIterator, 1);
       }
       // Push week
