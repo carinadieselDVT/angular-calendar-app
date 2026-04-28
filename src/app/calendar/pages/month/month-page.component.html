@@ -1,1 +1,15 @@
-<p>Month page working</p>
+<div class="h-full flex flex-col p-3">
+  <div>
+    {{ currentDate() | date: 'MMMM yyyy' }}
+  </div>
+  <div class="grid grid-cols-7 gap-2 mb-2 text-center font-semibold text-gray-500">
+    <div>Sun</div>
+    <div>Mon</div>
+    <div>Tue</div>
+    <div>Wed</div>
+    <div>Thu</div>
+    <div>Fri</div>
+    <div>Sat</div>
+  </div>
+  <calendar-month-view [month]="monthGrid()"></calendar-month-view>
+</div>
