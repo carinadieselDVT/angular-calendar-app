@@ -4,7 +4,7 @@
       @for (day of week; track day.date) {
         <div
           (click)="onDayClick(day)"
-          class="h-full bg-white p-2 cursor-pointer hover:bg-blue-500 transition flex justify-end items-start text-black rounded-md overflow-hidden"
+          class="h-full bg-white p-2 cursor-pointer hover:bg-teal-500 transition flex justify-end items-start text-black rounded-md overflow-hidden"
           [class.opacity-40]="!day.inCurrentMonth"
           [class.text-transparent]="!day.inCurrentMonth"
         >
