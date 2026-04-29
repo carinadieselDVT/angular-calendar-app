@@ -11,3 +11,14 @@ export interface CalendarMonth {
 }
 
 export type CalendarYearGrid = CalendarMonth[][];
+
+export interface Holiday {
+  name: string;
+  date: string;
+  public?: boolean;
+}
+
+export interface HolidayApiResponse {
+  status: number;
+  holidays: Holiday[];
+}
