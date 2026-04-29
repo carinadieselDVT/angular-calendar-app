@@ -1,0 +1,42 @@
+<div class="h-full min-h-0 grid grid-rows-3 gap-6 p-2 overflow-hidden">
+  @for (row of yearGrid; track $index) {
+    <div class="grid grid-cols-4 gap-8 min-h-0">
+      <!-- Months -->
+      @for (month of row; track month.date) {
+        <div class="flex flex-col min-h-0 overflow-hidden border rounded-2xl p-2 border-teal-600">
+          <div
+            class="text-center text-sm font-semibold pb-2 cursor-pointer"
+            (click)="onMonthClick(month)"
+          >
+            {{ month.date | date: 'MMM' }}
+          </div>
+          <div class="grid grid-cols-7 text-xs text-teal-500 font-semibold text-center pb-1">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <!-- Weeks -->
+          <div class="grid grid-rows-6 flex-1 min-h-0">
+            @for (week of month.weeks; track $index) {
+              <div class="grid grid-cols-7 min-h-0">
+                @for (day of week; track day.date) {
+                  <div
+                    class="h-full min-h-0 flex items-center justify-center text-xs cursor-pointer rounded-full hover:text-teal-600 hover:font-bold transition"
+                    [class.opacity-30]="!day.inCurrentMonth"
+                    (click)="onDayClick(day)"
+                  >
+                    {{ day.date | date: 'd' }}
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

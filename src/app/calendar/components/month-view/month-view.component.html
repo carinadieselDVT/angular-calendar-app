@@ -1,0 +1,16 @@
+<div class="grid grid-rows-6 gap-2 flex-1 h-full min-h-0">
+  @for (week of month; track $index) {
+    <div class="grid grid-cols-7 gap-2 h-full min-h-0">
+      @for (day of week; track day.date) {
+        <div
+          (click)="onDayClick(day)"
+          class="h-full bg-white p-2 cursor-pointer hover:bg-teal-500 transition flex justify-end items-start text-black rounded-md overflow-hidden"
+          [class.opacity-40]="!day.inCurrentMonth"
+          [class.text-transparent]="!day.inCurrentMonth"
+        >
+          {{ day.date.getDate() }}
+        </div>
+      }
+    </div>
+  }
+</div>
