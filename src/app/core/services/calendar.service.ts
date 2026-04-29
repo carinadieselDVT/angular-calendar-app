@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CalendarDay } from '../models/models';
-import { startOfMonth, startOfWeek, addDays, isSameMonth } from 'date-fns';
+import { CalendarDay, CalendarMonth, CalendarYearGrid } from '../models/models';
+import { startOfMonth, startOfWeek, addDays, isSameMonth, addMonths, startOfYear } from 'date-fns';
 
 @Injectable({
   providedIn: 'root',
@@ -29,18 +29,29 @@ export class CalendarService {
 
     return weeks;
   }
+
+  generateYearGrid(year: number): CalendarMonth[][] {
+    const yearStart = startOfYear(new Date(year, 0));
+    const months: CalendarMonth[] = [];
+
+    // Generate months
+    for (let i = 0; i < 12; i++) {
+      const date = addMonths(yearStart, i);
+
+      months.push({
+        date,
+        year: date.getFullYear(),
+        month: date.getMonth(),
+        weeks: this.generateMonth(date.getFullYear(), date.getMonth()),
+      });
+    }
+
+    // Split months into grid for ui
+    const yearGrid: CalendarMonth[][] = [];
+    for (let i = 0; i < 12; i += 4) {
+      yearGrid.push(months.slice(i, i + 4));
+    }
+
+    return yearGrid;
+  }
 }
-
-// Flow
-
-// /month -> What month by default ? - maybe currentDate = new Date()
-// MonthPage gets data from calendar service - something like generateMotnh(year,month)
-// MonthPage stores results but doesn't modify it
-// MonthPage passes data to calendar view
-
-// MonthView:
-// Loops weeks + days
-// Displays date number
-// Current month
-
-// Use 42 cells for calendar so it doesn't overflow ever

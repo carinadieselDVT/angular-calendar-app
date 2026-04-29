@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { MonthViewComponent } from '../../components/month-view/month-view.component';
 
 @Component({
+  selector: 'month-page',
   standalone: true,
   imports: [DatePipe, MonthViewComponent],
   templateUrl: './month-page.component.html',

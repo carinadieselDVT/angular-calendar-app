@@ -1,1 +1,12 @@
-<p>Year page works</p>
+<div class="flex flex-col h-[85vh] min-h-0">
+  <p class="text-2xl text-center pb-3">
+    {{ currentYear() }}
+  </p>
+
+  <calendar-year-view
+    class="block flex-1 min-h-0"
+    [yearGrid]="yearGrid()"
+    (dayClick)="onDayClick($event)"
+    (monthClick)="onMonthClick($event)"
+  ></calendar-year-view>
+</div>
