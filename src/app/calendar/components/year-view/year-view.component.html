@@ -27,6 +27,8 @@
                   <div
                     class="h-full min-h-0 flex items-center justify-center text-xs cursor-pointer rounded-full hover:text-teal-600 hover:font-bold transition"
                     [class.opacity-30]="!day.inCurrentMonth"
+                    [class.text-yellow-500]="isPublicHoliday(day)"
+                    [class.font-bold]="isPublicHoliday(day)"
                     (click)="onDayClick(day)"
                   >
                     {{ day.date | date: 'd' }}

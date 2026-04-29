@@ -10,8 +10,6 @@ export interface CalendarMonth {
   weeks: CalendarDay[][];
 }
 
-export type CalendarYearGrid = CalendarMonth[][];
-
 export interface Holiday {
   name: string;
   date: string;
@@ -19,6 +17,5 @@ export interface Holiday {
 }
 
 export interface HolidayApiResponse {
-  status: number;
   holidays: Holiday[];
 }

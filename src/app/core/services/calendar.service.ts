@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CalendarDay, CalendarMonth, CalendarYearGrid } from '../models/models';
+import { CalendarDay, CalendarMonth } from '../models/models';
 import { startOfMonth, startOfWeek, addDays, isSameMonth, addMonths, startOfYear } from 'date-fns';
 
 @Injectable({
@@ -19,11 +19,10 @@ export class CalendarService {
       for (let day = 0; day < 7; day++) {
         weekRow.push({
           date: new Date(dateIterator),
-          inCurrentMonth: isSameMonth(dateIterator, firstDayOfMonth), // NB USE FOR STYLING !!!
+          inCurrentMonth: isSameMonth(dateIterator, firstDayOfMonth),
         });
         dateIterator = addDays(dateIterator, 1);
       }
-      // Push week
       weeks.push(weekRow);
     }
 
